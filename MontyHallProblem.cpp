@@ -118,7 +118,7 @@ bool solve(int N, bool f, mt19937& mt) {
     // 扉を変更する場合
     int openedDoor = rand(N, choose, answer, mt);
     choose = rand(N, choose, openedDoor, mt);
-    // cout << "opendDoor: " << openedDoor << ", choose: " << choose << endl;
+    // cout << "openedDoor: " << openedDoor << ", choose: " << choose << endl;
     return (choose == answer);
 }
 
@@ -143,13 +143,13 @@ int main() {
     for (int i = 0; i < cycle; i++) {
         if (solve(N, flag, mt)) correct++;
         if (i % (cycle / 10) == 0) {
-            cout << "correct: " << correct << ", wrong: " << i + 1 - correct << endl;
+            cout << "正解数: " << correct << ", 不正解数: " << i + 1 - correct << endl;
         }
     }
     cout << "---------------------------------" << endl;
     cout << "---------------------------------" << endl;
-    cout << "final" << endl;
-    cout << "correct: " << correct << ", wrong: " << cycle - correct << endl;
+    cout << "最終結果" << endl;
+    cout << "正解数: " << correct << ", 不正解数: " << cycle - correct << endl;
     double acc = correct == 0 ? 0.0 : correct / cycle;
     double wro = (cycle - correct) == 0 ? 0.0 : (cycle - correct) / cycle;
     cout << "正解率: " << acc << ", 間違い率" << wro << endl;

@@ -9,12 +9,9 @@ def solve(N, flag):
     choose = np.random.choice(doorList)
     if not flag:
         return doorFlag[choose]
-    # print("choose: {}".format(choose))
     openList = np.array([i for i in doorList if not (doorFlag[i] or i == choose)])
-    # print(openList)
     openDoor = np.random.choice(openList)
     doorFlag = np.delete(doorFlag, [openDoor, choose])
-    # print(doorFlag)
     return np.random.choice(doorFlag)
 
 
@@ -27,7 +24,7 @@ if __name__ == "__main__":
     print("何回試行しますか?")
     cycle = int(input())
     print("一度選んだ扉を変更しますか?(する: 1, しない: 0)")
-    flag = True if input() == 1 else False
+    flag = True if int(input()) == 1 else False
     correct = 0
     for i in range(1, cycle + 1):
         if solve(N, flag):
