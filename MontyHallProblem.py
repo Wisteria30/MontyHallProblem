@@ -15,6 +15,12 @@ def solve(N, flag):
     return np.random.choice(doorFlag)
 
 
+def solveEssence(N, flag):
+    answer = np.random.randint(0, N)
+    choice = np.random.randint(0, N)
+    return answer != choice if flag else answer == choice
+
+
 if __name__ == "__main__":
     print("扉の数を整数で指定してください")
     N = int(input())
@@ -27,14 +33,14 @@ if __name__ == "__main__":
     flag = True if int(input()) == 1 else False
     correct = 0
     for i in range(1, cycle + 1):
-        if solve(N, flag):
+        if solveEssence(N, flag):
             correct += 1
         if i % (cycle // 10) == 0:
             print("正解数: {}, 不正解数: {}".format(correct, i - correct))
 
     print("---------------------------------")
     print("---------------------------------")
-    print("final")
+    print("最終結果")
     print("正解数: {}, 不正解数: {}".format(correct, cycle - correct))
     acc = 0.0 if correct == 0 else (correct / cycle)
     wro = 0.0 if (cycle - correct) == 0 else ((cycle - correct) / cycle)
